@@ -4,6 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (Session::has('message'))
+            <p class="alert alert-secondary">{{ Session::get('message') }}</p>
+                
+            @endif
             <div class="card">
                 <div class="card-header">Add Cuisine</div>
 
@@ -54,7 +58,7 @@
                                 @enderror
                         </div>
                            <!-- input for user id  -->
-                           <input type="hidden" value="{{Auth::user()->id}}" readonly>
+                           <input type="hidden" name="user_id" value="{{Auth::user()->id}}" readonly>
                             <div class="form-group">
                             <label for="continent">Continent</label>
                             <select name="continent_id" id="continent_id" class="form-control @error('continent_id') is-invalid @enderror">

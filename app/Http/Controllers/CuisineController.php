@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 use App\Models\Cuisine;
 class CuisineController extends Controller
@@ -11,7 +13,11 @@ class CuisineController extends Controller
      */
     public function index()
     {
-        //
+        // show individual user cuisine 
+        $userId = Auth::id();
+        // return $userId;
+        $cuisines = Cuisine::where('user_id',$userId)->get();
+        return view('user-cuisine',compact('cuisines'));
     }
 
     /**
@@ -34,15 +40,18 @@ class CuisineController extends Controller
             'recipe'=>'required',
             'steps'=>'required'
         ]);
-        $data= $request->all();
         $image = $request->image->hashName();
         $request->image->move(public_path('cuisine-image'),$image);
 
-        $data['image']=$image;
-        $data['user_id']=$request->user_id;
-
-        Cuisine::create($data);
-        return redirect()->back();
+        Cuisine::create([
+            'cuisine_name'=>$request->cuisine_name,
+            'image'=> $image,
+            'user_id'=> $request->user_id,
+            'continent_id'=> $request->continent_id,
+            'recipe'=>$request->recipe,
+            'steps'=> $request->steps
+        ]);
+        return redirect()->route('cuisine.create')->with('message','Cuisine has been added');
 
 
     }
@@ -76,6 +85,10 @@ class CuisineController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cuisine = Cuisine::find($id);
+        $cuisineImage = $cuisine->image;
+        unlink(public_path('cuisine-image/'.$cuisineImage));
+        $cuisine->delete();
+        return redirect()->route('cuisine.index')->with('message','cuisine deleted');
     }
 }

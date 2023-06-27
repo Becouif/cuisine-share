@@ -35,6 +35,14 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        @if (Auth::check())
+                            <li class="nav-item">
+                                <a href="{{route('cuisine.create')}}" class="nav-link">Add Cuisine</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('cuisine.index')}}" class="nav-link">View Cuisine</a>
+                            </li>
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
