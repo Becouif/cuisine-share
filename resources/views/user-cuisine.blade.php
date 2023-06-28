@@ -8,7 +8,7 @@
                     <p>{{Session::get('message')}}</p>
                   @endif
             <div class="card">
-                <div class="card-header">manage your cuisine</div>
+                <div class="card-header fw-bold">manage your cuisine</div>
 
                 <div class="card-body">
 

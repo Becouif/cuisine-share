@@ -24,3 +24,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('cuisine',CuisineController::class)->middleware(Authenticate::class);
+
+Route::get('/cuisine/{id}/view',[FrontendController::class, 'show'])->name('cuisine.view');

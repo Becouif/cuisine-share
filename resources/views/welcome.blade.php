@@ -82,24 +82,30 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <!-- <div class="container"> -->
                 <div class="row">
                 @if (count($cuisines)>0)
                 @foreach ($cuisines as $key=>$cuisine)
-                <div class="card me-4" style="width: 18rem;">
-                <img src="{{asset('cuisine-image')}}/{{$cuisine->image}}" width="100" height="150" class="card-img-top" alt="{{ $cuisine->cuisine_name }}">
+                <div class="card m-5" style="width: 18rem;">
+                <img src="{{asset('cuisine-image')}}/{{$cuisine->image}}" width="110" height="250" class="card-img-top" alt="{{ $cuisine->cuisine_name }}">
                 <div class="card-body">
                     <h5 class="">{{$cuisine->cuisine_name}}</h5>
-                    <p class="card-text">{{$cuisine->steps}}</p>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <p class="card-text">{{Str::limit($cuisine->steps,120)}}</p>
+                    <a href="{{route('cuisine.view',[$cuisine->id])}}" class="btn btn-primary">View</a>
                 </div>
                 </div>
                 @endforeach
                 @else 
-                <p>No Cuisine available</p>
+
+            
+                    <span id="no-cuisine" class=" text-center">
+                    Oops! no cuisine found
+                    </span>
+
+
                 @endif
                 </div>
-            </div>
+            <!-- </div> -->
 
         </main>
     </div>
@@ -167,6 +173,13 @@ body {
   padding:10px;
   font-weight:600;
   text-transform: uppercase
+}
+
+#no-cuisine{
+    font-weight:400;
+    padding:10px;
+    font-size:20px;
+    font-style:italic;
 }
 
   </style>

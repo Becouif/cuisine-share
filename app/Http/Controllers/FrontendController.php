@@ -10,4 +10,9 @@ class FrontendController extends Controller
         $cuisines = Cuisine::latest()->get();
         return view('welcome',compact('cuisines'));
     }
+
+    public function show($id){
+        $cuisine = Cuisine::find($id);
+        return view('view-cuisine',compact('cuisine'));
+    }
 }

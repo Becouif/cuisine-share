@@ -61,7 +61,8 @@ class CuisineController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cuisine = Cuisine::find($id);
+        return view('view-cuisine',compact('cuisine'));
     }
 
     /**
