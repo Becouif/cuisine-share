@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Cuisine-Share</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -21,7 +21,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Cuisine-Share
+                    <i style="font-size:30px" class="fa-solid fa-utensils card-title">Cuisine-Share</i>
+                    
+                     
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -80,45 +82,92 @@
         </nav>
 
         <main class="py-4">
-            <div class="container mt-5">
-            <div class="row">
-                <!-- start of foreach and if  -->
+            <div class="container">
+                <div class="row">
                 @if (count($cuisines)>0)
-                @foreach ($cuisines as $cuisine)
-                    
-
-                <div class="col-sm-6">
-                    <div class="card">
-                    <img class="" src="{{asset('cuisine-image')}}/{{$cuisine->image}}" width="100" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$cuisine->cuisine_name}}</h5>
-                        <p class="card-text">{{$cuisine->steps}}</p>
-                        <a href="#" class="btn btn-primary">View</a>
-                    </div>
-                    </div>
+                @foreach ($cuisines as $key=>$cuisine)
+                <div class="card me-4" style="width: 18rem;">
+                <img src="{{asset('cuisine-image')}}/{{$cuisine->image}}" width="100" height="150" class="card-img-top" alt="{{ $cuisine->cuisine_name }}">
+                <div class="card-body">
+                    <h5 class="">{{$cuisine->cuisine_name}}</h5>
+                    <p class="card-text">{{$cuisine->steps}}</p>
+                    <a href="#" class="btn btn-primary">View</a>
                 </div>
-               <!-- end of foreach  -->
-               @endforeach
-               @else 
-               <p>no cuisine available</p>
-               @endif
+                </div>
+                @endforeach
+                @else 
+                <p>No Cuisine available</p>
+                @endif
+                </div>
             </div>
-            </div>
+
         </main>
     </div>
 </body>
 
 <style>
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
 
-    .card-img {
-      height: 200px;
-      object-fit: cover;
-    }
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+
+html,
+body {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  height: 100%;
+  width: 100%; 
+  background: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.card {
+  display: block; 
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
+    transition: box-shadow .25s; 
+}
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.img-card {
+  width: 100%;
+  height:200px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+  display:block;
+    overflow: hidden;
+}
+.img-card img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover; 
+  transition: all .25s ease;
+} 
+.card-content {
+  padding:15px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+}
+.card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+.card-read-more {
+  border-top: 1px solid #D4D4D4;
+}
+.card-read-more a {
+  text-decoration: none !important;
+  padding:10px;
+  font-weight:600;
+  text-transform: uppercase
+}
+
   </style>
 </html>
