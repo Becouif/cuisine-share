@@ -20,6 +20,7 @@
               <!-- Add more steps as needed -->
             </ul>
             <p class="card-text"><span class="fw-bold">Continent:</span> {{ $cuisine->continent->name }}</p>
+            <p class="card-text"><span class="fw-bold">Added by:</span> {{$cuisine->user->username}}</p>
           </div>
         </div>
       </div>
