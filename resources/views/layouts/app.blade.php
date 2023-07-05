@@ -59,10 +59,22 @@
                                 </li>
                             @endif
                         @else
+
                             <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->username }}
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="/user/edit/{{Auth::user()->id}}">Update username</a></li>
+                                </ul>
+                            </div>
+                            </li>
+                            <!-- <li class="nav-item">
                                 <p id="nav-link" class="nav-link" >
                                     {{ Auth::user()->username }}
-                                </p>
+                                </p> -->
 
                                 <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -75,7 +87,7 @@
                                         @csrf
                                     </form>
                                 </div> -->
-                            </li>
+                            <!-- </li> -->
                             <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -98,4 +110,16 @@
         </main>
     </div>
 </body>
+
+<footer>
+<p class="fixed-bottom" style="text-align: center"> Copyright &copy; <script>document.write(new Date().getFullYear())</script><a class="ms-1 copyright " href="">Becouif</a> All Rights Reserved</p>
+</footer>
+
+
+<style>
+    .copyright{
+    text-decoration:none;
+    font-family: 'Roboto', sans-serif;
+}
+</style>
 </html>

@@ -16,7 +16,7 @@ use App\Http\Middleware\Authenticate;
 |
 */
 
-Route::get('/', [FrontendController::class, 'homePage']);
+Route::get('/', [FrontendController::class, 'homePage'])->name('homepage');
 
 Auth::routes();
 
@@ -26,3 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('cuisine',CuisineController::class)->middleware(Authenticate::class);
 
 Route::get('/cuisine/{id}/view',[FrontendController::class, 'show'])->name('cuisine.view');
+
+Route::get('/user/edit/{id}',[FrontendController::class, 'edit'])->name('edit.user');
+
+Route::put('/user/update/{id}',[FrontendController::class, 'update'])->name('update.user');

@@ -84,36 +84,45 @@
         <main class="py-4">
             <!-- <div class="container"> -->
                 <div class="row">
-                @if (count($cuisines)>0)
-                @foreach ($cuisines as $key=>$cuisine)
-                <div class="card m-5" style="width: 18rem;">
-                <img src="{{asset('cuisine-image')}}/{{$cuisine->image}}" width="110" height="250" class="card-img-top" alt="{{ $cuisine->cuisine_name }}">
-                <div class="card-body">
-                    <h5 class="">{{$cuisine->cuisine_name}}</h5>
-                    <p class="card-text">{{Str::limit($cuisine->steps,120)}}</p>
-                    <a href="{{route('cuisine.view',[$cuisine->id])}}" class="btn btn-primary">View</a>
-                </div>
-                </div>
-                @endforeach
-                @else 
+                    @if (count($cuisines)>0)
+                    @foreach ($cuisines as $key=>$cuisine)
+                    <div class="card m-5" style="width: 18rem;">
+                        <img src="{{asset('cuisine-image')}}/{{$cuisine->image}}" width="110" height="250" class="card-img-top" alt="{{ $cuisine->cuisine_name }}">
+                        <div class="card-body">
+                            <h5 class="">{{$cuisine->cuisine_name}}</h5>
+                            <p class="card-text">{{Str::limit($cuisine->steps,120)}}</p>
+                            <a href="{{route('cuisine.view',[$cuisine->id])}}" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else 
 
-            
-                    <span id="no-cuisine" class=" text-center">
-                    Oops! no cuisine found
-                    </span>
+                
+                        <span id="no-cuisine" class=" text-center">
+                        Oops! no cuisine found
+                        </span>
 
 
-                @endif
+                    @endif
                 </div>
             <!-- </div> -->
-
+            <span class="justify-content-center text-center pagination">{{ $cuisines->links() }}</span>
         </main>
     </div>
 </body>
 
+<footer>
+<p class="fixed-bottom" style="text-align: center"> Copyright &copy; <script>document.write(new Date().getFullYear())</script><a class="ms-1 copyright" href="">Becouif</a> All Rights Reserved</p>
+</footer>
 <style>
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+
+.copyright{
+    text-decoration:none;
+    font-family: 'Roboto', sans-serif;
+}
+
 
 html,
 body {
