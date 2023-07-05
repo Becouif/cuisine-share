@@ -59,10 +59,16 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <p id="nav-link" class="nav-link" >
-                                    {{ Auth::user()->username }}
-                                </p>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->username }}
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="/user/edit/{{Auth::user()->id}}">Update username</a></li>
+                                </ul>
+                            </div>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
