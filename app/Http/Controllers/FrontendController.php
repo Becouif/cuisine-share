@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function homePage(){
-        $cuisines = Cuisine::latest()->paginate(4);
+        $cuisines = Cuisine::latest()->paginate(8);
         return view('welcome',compact('cuisines'));
     }
 
