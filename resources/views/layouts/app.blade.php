@@ -112,7 +112,7 @@
 </body>
 
 <footer>
-<p class="fixed-bottom" style="text-align: center"> Copyright &copy; <script>document.write(new Date().getFullYear())</script><a class="ms-1 copyright " href="">Becouif</a> All Rights Reserved</p>
+<p class="mt-4" style="text-align: center"> Copyright &copy; <script>document.write(new Date().getFullYear())</script><a class="ms-1 copyright " href="">Becouif</a> All Rights Reserved</p>
 </footer>
 
 
